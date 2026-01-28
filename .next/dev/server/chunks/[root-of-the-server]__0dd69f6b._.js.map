@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/api/props.tsx"],"sourcesContent":["/**\r\n * 비밀번호 유효 여부\r\n * @param pw password input\r\n * @returns password validity\r\n */\r\nexport const isPassword = (pw: string) => {\r\n    return process.env.WEB_PASS_KEY === pw;\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;CAIC;;;;AACM,MAAM,aAAa,CAAC;IACvB,OAAO,QAAQ,GAAG,CAAC,YAAY,KAAK;AACxC"}},
+    {"offset": {"line": 61, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/api/loa/event/route.tsx"],"sourcesContent":["import { NextRequest, NextResponse } from \"next/server\";\r\nimport { isPassword } from \"@api/props\";\r\n\r\nexport async function GET(req: NextRequest) {\r\n    const password = req.headers.get(\"X-User-Password\");\r\n\r\n    console.log(isPassword(password as string)); // 강제 캐스팅 \r\n    \r\n\r\n\r\n    return NextResponse.json({ ok: true, password });\r\n}"],"names":[],"mappings":";;;;AAAA;AACA;;;AAEO,eAAe,IAAI,GAAgB;IACtC,MAAM,WAAW,IAAI,OAAO,CAAC,GAAG,CAAC;IAEjC,QAAQ,GAAG,CAAC,IAAA,oIAAU,EAAC,YAAsB,UAAU;IAIvD,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAE,IAAI;QAAM;IAAS;AAClD"}}]
+}

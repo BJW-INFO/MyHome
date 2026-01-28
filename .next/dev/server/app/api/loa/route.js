@@ -1,0 +1,12 @@
+var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/api/loa/route.js")
+R.c("server/chunks/node_modules_next_783988f3._.js")
+R.c("server/chunks/node_modules_axios_lib_965bc11c._.js")
+R.c("server/chunks/node_modules_mime-db_f53cdd2e._.js")
+R.c("server/chunks/node_modules_@supabase_realtime-js_dist_module_306ac729._.js")
+R.c("server/chunks/node_modules_@supabase_storage-js_dist_module_473cf4b8._.js")
+R.c("server/chunks/node_modules_@supabase_auth-js_dist_module_d4605ced._.js")
+R.c("server/chunks/node_modules_022fc61a._.js")
+R.c("server/chunks/[root-of-the-server]__bb2f518b._.js")
+R.c("server/chunks/_next-internal_server_app_api_loa_route_actions_b03d21a0.js")
+R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/loa/route.tsx [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/loa/route.tsx [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/hook/useAuth.tsx"],"sourcesContent":["import { useEffect, useState } from \"react\"\r\n\r\nexport interface AuthProps {\r\n\r\n}\r\n\r\nexport const useAuth = () => {\r\n    const [ auth, setAuth ] = useState(localStorage.getItem('authPw'));\r\n   console.log(auth);\r\n    useEffect(()=>{\r\n        console.log(auth);\r\n    },[auth])\r\n\r\n}"],"names":[],"mappings":";;;;AAAA;;AAMO,MAAM,UAAU;IACnB,MAAM,CAAE,MAAM,QAAS,GAAG,IAAA,iNAAQ,EAAC,aAAa,OAAO,CAAC;IACzD,QAAQ,GAAG,CAAC;IACX,IAAA,kNAAS,EAAC;QACN,QAAQ,GAAG,CAAC;IAChB,GAAE;QAAC;KAAK;AAEZ"}},
+    {"offset": {"line": 33, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/page.tsx"],"sourcesContent":["// import Main from \"./main/page\";\n\nimport { useAuth } from \"@/hook/useAuth\";\n\nexport default function Index() {\n  const a = useAuth();\n  return (<>\n    \n  \n  </>);\n}\n"],"names":[],"mappings":"AAAA,kCAAkC;;;;;;AAElC;;;AAEe,SAAS;IACtB,MAAM,IAAI,IAAA,2HAAO;IACjB,qBAAQ;AAIV"}}]
+}

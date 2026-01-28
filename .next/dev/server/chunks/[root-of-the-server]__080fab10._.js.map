@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/api/route.tsx"],"sourcesContent":["\r\n\r\n\r\n\r\nexport async function POST(request: Request) {\r\n    console.log(process.env.WEB_PASS_KEY);\r\n    try {\r\n        const { password } = await request.json();\r\n        console.log(password)\r\n        if(!password) {\r\n            return new Response(\r\n                JSON.stringify({ success: false, message: 'Api Error(/api) => Not Password' }),\r\n                { status: 400, headers: { 'Content-Type': 'application/json' }}\r\n            );\r\n        }\r\n\r\n    }\r\n    catch(error) { \r\n\r\n    }\r\n}\r\n"],"names":[],"mappings":";;;;AAIO,eAAe,KAAK,OAAgB;IACvC,QAAQ,GAAG,CAAC,QAAQ,GAAG,CAAC,YAAY;IACpC,IAAI;QACA,MAAM,EAAE,QAAQ,EAAE,GAAG,MAAM,QAAQ,IAAI;QACvC,QAAQ,GAAG,CAAC;QACZ,IAAG,CAAC,UAAU;YACV,OAAO,IAAI,SACP,KAAK,SAAS,CAAC;gBAAE,SAAS;gBAAO,SAAS;YAAkC,IAC5E;gBAAE,QAAQ;gBAAK,SAAS;oBAAE,gBAAgB;gBAAmB;YAAC;QAEtE;IAEJ,EACA,OAAM,OAAO,CAEb;AACJ"}}]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/components/index.tsx"],"sourcesContent":["export { Header } from './header';\r\nexport { AuthProvider } from './authProvider'"],"names":[],"mappings":";AAAA;AACA"}},
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/page.tsx"],"sourcesContent":["// import Main from \"./main/page\";\n\n'use client';\nimport { AuthProvider } from \"./components\";\n\nexport default function Index() {\n  return (<>\n    <AuthProvider>\n      <div>dd</div>\n    </AuthProvider>\n  </>);\n}\n"],"names":[],"mappings":"AAAA,kCAAkC;;;;;;AAGlC;AAAA;AADA;;;AAGe,SAAS;IACtB,qBAAQ;kBACN,cAAA,8OAAC,kJAAY;sBACX,cAAA,8OAAC;0BAAI;;;;;;;;;;;;AAGX"}}]
+}

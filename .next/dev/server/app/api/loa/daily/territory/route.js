@@ -1,0 +1,12 @@
+var R=require("../../../../../chunks/[turbopack]_runtime.js")("server/app/api/loa/daily/territory/route.js")
+R.c("server/chunks/node_modules_next_b3724f84._.js")
+R.c("server/chunks/node_modules_@supabase_realtime-js_dist_module_306ac729._.js")
+R.c("server/chunks/node_modules_@supabase_storage-js_dist_module_473cf4b8._.js")
+R.c("server/chunks/node_modules_@supabase_auth-js_dist_module_d4605ced._.js")
+R.c("server/chunks/node_modules_axios_lib_965bc11c._.js")
+R.c("server/chunks/node_modules_mime-db_f53cdd2e._.js")
+R.c("server/chunks/node_modules_c4888c18._.js")
+R.c("server/chunks/[root-of-the-server]__661c8d18._.js")
+R.c("server/chunks/_next-internal_server_app_api_loa_daily_territory_route_actions_bc5e957d.js")
+R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/loa/daily/territory/route.tsx [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/loa/daily/territory/route.tsx [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

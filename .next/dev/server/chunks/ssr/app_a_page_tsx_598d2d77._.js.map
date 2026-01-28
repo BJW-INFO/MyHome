@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/a/page.tsx"],"sourcesContent":["'use client';\r\n\r\nexport default function Index() {\r\n  return (<>\r\n    <>꺼져</>\r\n  </>);\r\n}"],"names":[],"mappings":";;;;;AAAA;;AAEe,SAAS;IACtB,qBAAQ;kBACN,cAAA;sBAAE;;;AAEN"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/A0_Win_NoteBook/Documents/MyHome/app/real/page.tsx"],"sourcesContent":["'use client';\r\n\r\nexport default function Real() {\r\n  return (<>\r\n      <div>dd</div>\r\n  </>);\r\n}"],"names":[],"mappings":";;;;;AAAA;;AAEe,SAAS;IACtB,qBAAQ;kBACJ,cAAA,8OAAC;sBAAI;;;;;;;AAEX"}}]
+}

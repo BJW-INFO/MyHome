@@ -19,7 +19,6 @@ export const territoryPatten = async () => {
                 profiles: profiles,
             })
         }
-        console.log(`dd`);
         result = contentsSort(result,`profile`)
     }
     catch (error: any) { throw error; }

@@ -222,13 +222,19 @@ function Territory({ data }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
             className: "flex flex-row gap-2 items-center",
-            children: territory.map((o, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Timer, {
-                    territory: o,
-                    update: getTerritory
-                }, void 0, false, {
+            children: territory.map((o, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].Fragment, {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Timer, {
+                        territory: o,
+                        update: getTerritory
+                    }, void 0, false, {
+                        fileName: "[project]/app/loa/daily/components/territory.tsx",
+                        lineNumber: 136,
+                        columnNumber: 21
+                    }, this)
+                }, i, false, {
                     fileName: "[project]/app/loa/daily/components/territory.tsx",
-                    lineNumber: 134,
-                    columnNumber: 38
+                    lineNumber: 135,
+                    columnNumber: 17
                 }, this))
         }, void 0, false, {
             fileName: "[project]/app/loa/daily/components/territory.tsx",
@@ -253,46 +259,55 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-function Procyon({ data }) {
+function Procyon({ defultData = undefined }) {
     const [onlyGold, setOnlyGold] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$custemStorage$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["custemStorage"].local.get(`onlyGold`, true));
-    const [procyons, setProcyons] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const procyonEffect = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffectEvent"])(async ()=>{
+    const [data, setData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
+        profiles: [],
+        procyons: []
+    });
+    const getDataEffect = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffectEvent"])(async ()=>{
         try {
             const response = await __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$aixos$2f$custem$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["custemAxios"].get(`/loa/daily/procyon`);
             if (response.status !== 200) {
                 throw new Error(response.data.message);
             }
-            setProcyons(response.data.data);
+            setData(response.data.data);
         } catch (error) {
             console.error("데이터 패치 실패:", error);
         }
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (data !== undefined) {
-            setProcyons(data);
+        if (defultData !== undefined) {
+            setData(defultData);
         } else {
-            procyonEffect();
+            getDataEffect();
         }
     }, []);
     const onClickOnlyGold = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
-        const result = !onlyGold;
-        setOnlyGold(result);
-        __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$custemStorage$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["custemStorage"].local.set(`onlyGold`, result);
+        setOnlyGold(!onlyGold);
+        __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$custemStorage$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["custemStorage"].local.set(`onlyGold`, !onlyGold);
     }, [
         onlyGold
     ]);
-    const selectProcyon = (isWeekDay)=>{
-        if (!isWeekDay) return procyons;
-        const todayAt = new Date().getHours();
-        return todayAt < 12 ? procyons.slice(0, 3) : procyons.slice(3, 6);
-    };
-    if (procyons.length === 0) return;
-    else {
-        console.log(procyons);
-        const isWeekDay = procyons.length === 6;
-        const procyon = selectProcyon(isWeekDay);
-        const goldProcyon = [];
-        // const goldProcyon = procyon.filter(island => island.reward.some(r => r.name.includes('골드')));
+    const onChangetoggle = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async (e, profile)=>{
+        e.stopPropagation();
+    // const response = await custemAxios.put(`/loa/daily/procyon`);
+    }, []);
+    const selectProcyon = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
+        const { procyons } = data;
+        if (procyons.length === 6) {
+            return new Date().getHours() < 12 ? procyons.slice(0, 3) : procyons.slice(3, 6);
+        } else {
+            return procyons;
+        }
+    }, [
+        data
+    ]);
+    if (data.profiles.length === 0) {
+        return;
+    } else {
+        const profiles = data.profiles;
+        const procyons = onlyGold ? selectProcyon().filter((island)=>island.reward.some((r)=>r.name.includes('골드'))) : selectProcyon();
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "w-[100%] bg-white border border-gray-200 rounded-xl shadow-lg p-2",
@@ -309,28 +324,28 @@ function Procyon({ data }) {
                                             children: "🧭 프로키온"
                                         }, void 0, false, {
                                             fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                            lineNumber: 47,
+                                            lineNumber: 57,
                                             columnNumber: 29
                                         }, this),
-                                        procyon.map((o, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        procyons.map((o, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `transition-all duration-600 flex flex-col text-[0.75rem] group rounded-md pt-0.25 pb-0.25 pl-1.5 pr-1.5`,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "whitespace-nowrap",
                                                     children: o.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                                    lineNumber: 50,
+                                                    lineNumber: 60,
                                                     columnNumber: 37
                                                 }, this)
                                             }, i, false, {
                                                 fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                                lineNumber: 49,
+                                                lineNumber: 59,
                                                 columnNumber: 33
                                             }, this))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                    lineNumber: 46,
+                                    lineNumber: 56,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -339,41 +354,49 @@ function Procyon({ data }) {
                                     children: "only gold"
                                 }, void 0, false, {
                                     fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                    lineNumber: 54,
+                                    lineNumber: 64,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                            lineNumber: 45,
+                            lineNumber: 55,
                             columnNumber: 21
                         }, this),
-                        onlyGold && goldProcyon.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                        onlyGold ? procyons.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                             className: "text-xs pt-2 text-gray-500",
                             children: " 당일 골드 보상이 없습니다."
                         }, void 0, false, {
                             fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                            lineNumber: 58,
-                            columnNumber: 62
-                        }, this),
-                        onlyGold ? goldProcyon : procyon.map((o, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                onClick: ()=>{},
-                                className: "flex flex-row tems-center justify-between p-0.5 border-dashed border-b-1 hover:bg-gray-100",
-                                children: "ddd"
-                            }, i, false, {
+                            lineNumber: 69,
+                            columnNumber: 52
+                        }, this) : profiles.map((value, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                children: [
+                                    value.account + String(value.character).padStart(2, `0`),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "checkbox",
+                                        value: value.etc.is_clear || false,
+                                        onChange: (e)=>onChangetoggle(e, value)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/loa/daily/components/procyon.tsx",
+                                        lineNumber: 73,
+                                        columnNumber: 33
+                                    }, this)
+                                ]
+                            }, index, true, {
                                 fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                                lineNumber: 60,
-                                columnNumber: 25
+                                lineNumber: 71,
+                                columnNumber: 29
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                    lineNumber: 44,
+                    lineNumber: 54,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/loa/daily/components/procyon.tsx",
-                lineNumber: 43,
+                lineNumber: 53,
                 columnNumber: 13
             }, this)
         }, void 0, false);

@@ -387,9 +387,8 @@ const getCategories = async (type, name)=>{
 const schedulerUpdated = async (props)=>{
     let { contents } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$deepCopy$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["deepCopy"])(props);
     try {
-        const { error: updateError } = await supabase.rpc(`update_loa_event_contents`, {
-            p_id: contents.map((data)=>data.id),
-            p_is_clear: false
+        const { error: updateError } = await supabase.rpc(`update_contents_category`, {
+            p_category: contents.map((data)=>data.id)
         });
         if (updateError) {
             return false;
@@ -416,38 +415,39 @@ async function scheduler(props) {
         if (scheduleError) {
             throw scheduleError;
         }
-        const { data: contents, error: contentsError } = await supabase.from('contents').select(`*`).eq('category', category);
+        const { data: contents, error: contentsError } = await supabase.from('contents').select(`*,profile(*)`).eq('category', category);
         if (contentsError) {
             throw contentsError;
         }
-        if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])(schedule.updated_at).isBefore(today.startOf('day')) && today.hour() >= schedule.update_time) {
-            switch(schedule.update_cycle){
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].DAILY:
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY:
-                    {
-                        if (schedule.update_weeks.length !== 0) {
-                            if (!schedule.update_weeks.includes(today.day())) {
-                                return await callback({
-                                    contents: contents,
-                                    category
-                                });
-                            }
-                        } else if (schedule.update_cycle === __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY) {
-                            throw new Error(`Weekly schedule not update_weeks`);
+        //! 테스트를 위한 주석화
+        // if (dayjs(schedule.updated_at).isBefore(today.startOf('day')) && today.hour() >= schedule.update_time) {
+        switch(schedule.update_cycle){
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].DAILY:
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY:
+                {
+                    if (schedule.update_weeks.length !== 0) {
+                        if (!schedule.update_weeks.includes(today.day())) {
+                            return await callback({
+                                contents: contents,
+                                category
+                            });
                         }
+                    } else if (schedule.update_cycle === __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY) {
+                        throw new Error(`Weekly schedule not update_weeks`);
                     }
-                    break;
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].MONTHLY:
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].Quarterly:
-                    {
-                    /*
+                }
+                break;
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].MONTHLY:
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].Quarterly:
+                {
+                /*
                     2 => 월간확인 [] 해당 월이 지났는지 확인
                     3 => 날짜로 확인
                     월간은 강제로 해당달의 1일로 바꿔버린다.
                     */ }
-                    break;
-            }
+                break;
         }
+        // }
         const update = await updated({
             contents: contents,
             category: category
@@ -543,45 +543,58 @@ __turbopack_context__.s([
     "procyonPatten",
     ()=>procyonPatten
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dayjs/dayjs.min.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$props$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/api/props.tsx [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$loa$2f$route$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/api/loa/route.tsx [app-route] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dayjs/dayjs.min.js [app-route] (ecmascript)");
 ;
 ;
 ;
 const procyonPatten = async (calendars)=>{
-    let result = []; // 프로키욘 결과들
+    const today = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])().tz('Asia/Seoul');
+    let result = {
+        profiles: [],
+        procyons: []
+    };
     try {
-        let procyons = [];
-        const today = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])().tz('Asia/Seoul');
-        for (const procyon of calendars){
-            if (procyon.CategoryName !== `모험 섬`) {
-                continue;
-            }
-            const times = procyon.StartTimes;
-            for (const time of times){
-                const startTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])(time).tz('Asia/Seoul');
-                if (startTime.isSame(today, 'day')) {
-                    procyons.push(procyon);
-                    break;
+        result.profiles = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$props$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["scheduler"])({
+            category: {
+                type: 'LOA',
+                name: 'PROCYON'
+            },
+            callback: async ({ contents })=>{
+                if (contents === false) {
+                    return [];
                 }
+                return contents.map((content)=>({
+                        id: content.id,
+                        account: content.profile.account,
+                        character: content.profile.character,
+                        etc: content.etc
+                    }));
             }
-        }
-        if (procyons.length === 6) {
-            procyons.sort((a, b)=>{
+        });
+        const todayCalendars = calendars.filter((procyon)=>{
+            if (procyon.CategoryName !== '모험 섬') return false;
+            return procyon.StartTimes.some((time)=>{
+                const startTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])(time).tz('Asia/Seoul');
+                return startTime.isSame(today, 'day');
+            });
+        });
+        if (todayCalendars.length === 6) {
+            todayCalendars.sort((a, b)=>{
                 return new Date(a.StartTimes[0]).getTime() - new Date(b.StartTimes[0]).getTime();
             });
         }
-        for (const procyon of procyons){
-            result.push({
-                name: procyon.Location,
-                icon: procyon.ContentsIcon,
-                reward: procyon.RewardItems[0].Items.map((item)=>({
+        result.procyons = todayCalendars.map((todayCalendar)=>{
+            return {
+                name: todayCalendar.Location,
+                icon: todayCalendar.ContentsIcon,
+                reward: todayCalendar.RewardItems[0].Items.map((item)=>({
                         name: item.Name,
                         img: item.Icon
                     }))
-            });
-        }
+            };
+        });
     } catch (error) {
         throw error;
     }

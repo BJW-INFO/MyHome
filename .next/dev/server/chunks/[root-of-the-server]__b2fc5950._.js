@@ -387,9 +387,8 @@ const getCategories = async (type, name)=>{
 const schedulerUpdated = async (props)=>{
     let { contents } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$deepCopy$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["deepCopy"])(props);
     try {
-        const { error: updateError } = await supabase.rpc(`update_loa_event_contents`, {
-            p_id: contents.map((data)=>data.id),
-            p_is_clear: false
+        const { error: updateError } = await supabase.rpc(`update_contents_category`, {
+            p_category: contents.map((data)=>data.id)
         });
         if (updateError) {
             return false;
@@ -416,38 +415,39 @@ async function scheduler(props) {
         if (scheduleError) {
             throw scheduleError;
         }
-        const { data: contents, error: contentsError } = await supabase.from('contents').select(`*`).eq('category', category);
+        const { data: contents, error: contentsError } = await supabase.from('contents').select(`*,profile(*)`).eq('category', category);
         if (contentsError) {
             throw contentsError;
         }
-        if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dayjs$2f$dayjs$2e$min$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])(schedule.updated_at).isBefore(today.startOf('day')) && today.hour() >= schedule.update_time) {
-            switch(schedule.update_cycle){
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].DAILY:
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY:
-                    {
-                        if (schedule.update_weeks.length !== 0) {
-                            if (!schedule.update_weeks.includes(today.day())) {
-                                return await callback({
-                                    contents: contents,
-                                    category
-                                });
-                            }
-                        } else if (schedule.update_cycle === __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY) {
-                            throw new Error(`Weekly schedule not update_weeks`);
+        //! 테스트를 위한 주석화
+        // if (dayjs(schedule.updated_at).isBefore(today.startOf('day')) && today.hour() >= schedule.update_time) {
+        switch(schedule.update_cycle){
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].DAILY:
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY:
+                {
+                    if (schedule.update_weeks.length !== 0) {
+                        if (!schedule.update_weeks.includes(today.day())) {
+                            return await callback({
+                                contents: contents,
+                                category
+                            });
                         }
+                    } else if (schedule.update_cycle === __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].WEEKLY) {
+                        throw new Error(`Weekly schedule not update_weeks`);
                     }
-                    break;
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].MONTHLY:
-                case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].Quarterly:
-                    {
-                    /*
+                }
+                break;
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].MONTHLY:
+            case __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$daysEnum$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["WeekCycles"].Quarterly:
+                {
+                /*
                     2 => 월간확인 [] 해당 월이 지났는지 확인
                     3 => 날짜로 확인
                     월간은 강제로 해당달의 1일로 바꿔버린다.
                     */ }
-                    break;
-            }
+                break;
         }
+        // }
         const update = await updated({
             contents: contents,
             category: category
@@ -595,7 +595,6 @@ const territoryPatten = async ()=>{
                 profiles: profiles
             });
         }
-        console.log(`dd`);
         result = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$api$2f$loa$2f$props$2e$tsx__$5b$app$2d$route$5d$__$28$ecmascript$29$__["contentsSort"])(result, `profile`);
     } catch (error) {
         throw error;

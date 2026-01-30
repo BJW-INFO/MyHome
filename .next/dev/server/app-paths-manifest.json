@@ -1,8 +1,10 @@
 {
   "/api/loa/daily/procyon/route": "app/api/loa/daily/procyon/route.js",
   "/api/loa/daily/route": "app/api/loa/daily/route.js",
+  "/api/loa/event/route": "app/api/loa/event/route.js",
   "/api/loa/route": "app/api/loa/route.js",
   "/api/route": "app/api/route.js",
   "/loa/daily/page": "app/loa/daily/page.js",
+  "/loa/event/page": "app/loa/event/page.js",
   "/page": "app/page.js"
 }

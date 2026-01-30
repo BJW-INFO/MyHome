@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import dayjs from "dayjs";
-import { CustomError, CustomResponse, isPassword, passwordError, scheduler } from "@api/props";
+import { CustomError, CustomResponse, getCategories, isPassword, passwordError, scheduler } from "@api/props";
 import { lostArkApi } from "@api/loa/route";
 import { ProfileProp } from "@api/loa/props";
 
@@ -23,10 +23,11 @@ export const procyonPatten = async (calendars: any) => {
         result.profiles = await scheduler({
             category: { type: 'LOA', name: 'PROCYON' },
             callback: async ({ contents }) => {
+                if (contents === false) { return []; }
                 return contents.map((content: any) => ({
                     id: content.id,
-                    account: content.account,
-                    character: content.character,
+                    account: content.profile.account,
+                    character: content.profile.character,
                     etc: content.etc,
                 }));
             }
@@ -52,38 +53,6 @@ export const procyonPatten = async (calendars: any) => {
 
             }
         })
-        console.log(result);
-
-
-        // let procyons = [];
-        // const today = dayjs().tz('Asia/Seoul');
-        // for (const procyon of calendars) {
-        //     if (procyon.CategoryName !== `모험 섬`) { continue; }
-        //     const times: string[] = procyon.StartTimes;
-        //     for (const time of times) {
-        //         const startTime = dayjs(time).tz('Asia/Seoul');
-        //         if (startTime.isSame(today, 'day')) {
-        //             procyons.push(procyon);
-        //             break;
-        //         }
-        //     }
-        // }
-        // if (procyons.length === 6) {
-        //     procyons.sort((a, b) => {
-        //         return new Date(a.StartTimes[0]).getTime() - new Date(b.StartTimes[0]).getTime();
-        //     });
-        // }
-        // for (const procyon of procyons) {
-        //     result.push({
-        //         name: procyon.Location,
-        //         icon: procyon.ContentsIcon,
-        //         reward: procyon.RewardItems[0].Items.map((item: any) => ({
-        //             name: item.Name,
-        //             img: item.Icon
-        //         })),
-        //     })
-        // }
-        // 스케줄러로 유저들 들고오기
     } catch (error: any) { throw error; }
     return result;
 }
@@ -94,6 +63,18 @@ export async function GET(req: NextRequest) {
         const calendars = await lostArkApi.calendar();
         const procyon = await procyonPatten(calendars);
         return CustomResponse(procyon);
+    } catch (e: any) {
+        return new CustomError(`loa/daily/territory => get error`, e.error, e.status);
+    }
+}
+
+export async function PUT(req: NextRequest) {
+    if (!isPassword(req.headers.get("X-User-Password"))) { return passwordError; }
+    try {
+        // const calendars = await lostArkApi.calendar();
+        // const procyon = await procyonPatten(calendars);
+        // 업데이트 
+        return CustomResponse();
     } catch (e: any) {
         return new CustomError(`loa/daily/territory => get error`, e.error, e.status);
     }

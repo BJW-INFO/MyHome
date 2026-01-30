@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useEffectEvent, useState } from "react";
+import React, { useCallback, useEffect, useEffectEvent, useState } from "react";
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -9,7 +9,7 @@ dayjs.extend(duration);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-function Timer({territory, update }: any) {
+function Timer({ territory, update }: any) {
     const [time, setTime] = useState({ hour: 0, minute: 0 });
 
     const timeEffect = useEffectEvent(() => {
@@ -55,9 +55,9 @@ function Timer({territory, update }: any) {
         }
     }, [territory])
 
-    const onClickTime = useCallback(async(e) => {
+    const onClickTime = useCallback(async (e) => {
         e.stopPropagation();
-        if(territory.etc.expires === undefined) { return; }
+        if (territory.etc.expires === undefined) { return; }
         const { profile } = territory;
         if (confirm(`${profile.account + String(profile.character).padStart(2, '0')} 의 시간을 초기화 하시겠습니까?`)) {
             const response = await custemAxios.post<{ message: string; data: any[] }>(
@@ -131,7 +131,11 @@ export function Territory({ data }: any) {
     if (territory.length === 0) { return; }
     return (<>
         <ul className='flex flex-row gap-2 items-center'>
-            {territory.map((o, i) => <Timer territory={o} update={getTerritory} />)}
+            {territory.map((o, i) =>
+                <React.Fragment key={i}>
+                    <Timer territory={o} update={getTerritory} />
+                </React.Fragment>
+            )}
         </ul>
     </>)
 }
